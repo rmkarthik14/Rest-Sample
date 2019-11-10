@@ -1,5 +1,7 @@
 package com.expediagroup.webapp.Controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.expediagroup.webapp.model.Flights;
 import com.expediagroup.webapp.service.FlightService;
+
 /*
  * Controller class for the flight system.
  * @author Karthik Ramachandran Murugesan
@@ -22,6 +25,8 @@ public class FlightController {
 	
 	@Autowired
 	private FlightService flightService;
+	
+	private Logger logger = LoggerFactory.getLogger(FlightController.class);
 	
 	/*
 	 * Creates and send the flight to service object.
