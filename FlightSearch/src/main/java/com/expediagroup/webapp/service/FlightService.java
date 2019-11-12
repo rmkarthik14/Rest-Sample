@@ -1,5 +1,6 @@
 package com.expediagroup.webapp.service;
 
+import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -50,12 +51,16 @@ public class FlightService {
 		LocalTime time = LocalTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
 		
-		try {
+		/*try {
 			time = LocalTime.parse(flightTime, formatter);
+			
 		} catch (Exception e) {
 			logger.error("Enter time in the following format 6:00 AM (h:mm a Format)");
-			return new ResponseEntity<Object>("Enter time in the following format 6:00 AM (h:mm a Format)", HttpStatus.BAD_REQUEST);
-		}
+			throw e;
+			//return new ResponseEntity<Object>("Enter time in the following format 6:00 AM (h:mm a Format)", HttpStatus.BAD_REQUEST);
+		} */
+		
+		time = LocalTime.parse(flightTime, formatter);
 		
 		LocalTime maxTime = time.plusHours(5);
 		LocalTime minTime = time.minusHours(5);
@@ -68,8 +73,9 @@ public class FlightService {
 
 		if (flightFound.size() == 0) {
 				logger.info("No flights available in the given search criteria");
+				//throw NullException;
 				return new ResponseEntity<Object>("No flights available in the given search criteria", HttpStatus.OK);
-			}
+			} 
 		logger.info("Flights are fetched successfully");
 		return new ResponseEntity<Object>(flightFound, HttpStatus.OK);
 		
