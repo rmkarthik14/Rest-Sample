@@ -8,11 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
+
 public class securityConfigaration extends WebSecurityConfigurerAdapter{
 	
 	protected void configure(AuthenticationManagerBuilder authenticate) throws Exception {
-		
+	/*	
 		authenticate.inMemoryAuthentication()
 					.withUser("user")
 					.password("password")
@@ -35,5 +35,7 @@ public class securityConfigaration extends WebSecurityConfigurerAdapter{
 			.antMatchers("/flight").hasRole("ADMIN")
 			.antMatchers("/count").permitAll()
 			.and().formLogin();
+	*/
 	}
+	
 }
